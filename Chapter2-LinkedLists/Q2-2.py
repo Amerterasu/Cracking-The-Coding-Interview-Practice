@@ -5,12 +5,16 @@ def findKToLast(head, K):
     currentNode = head
     counter = 1
     kNode = head
-    while counter <= K:
-        if counter == K:
-            kNode = currentNode
-        elif counter < K:
-            currentNode = currentNode.next
-        if currentNode.next is None:
-            return kNode
+    while currentNode is not None:
+        if counter < K:
+            counter += 1
+        else:
+            kNode = kNode.next
+        currentNode = currentNode.next
+        
+    if counter == K:
+        return kNode
+    else:
+        return None
+        
 
-        kNode = kNode.next
