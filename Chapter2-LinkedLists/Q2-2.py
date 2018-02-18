@@ -1,9 +1,7 @@
 from linkedlist import Node
 def findKToLast(head, K):
-    lastKElm = {}
-
     currentNode = head
-    counter = 1
+    counter = 0
     kNode = head
     while currentNode is not None:
         if counter < K:
@@ -16,5 +14,11 @@ def findKToLast(head, K):
         return kNode
     else:
         return None
+
+testLinkedList = Node(1)
+testLinkedList.createLinkedListFromList([2,3,4])
+result = findKToLast(testLinkedList, 4)
+print(result.data)
+
         
 
