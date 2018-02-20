@@ -3,31 +3,25 @@ from linkedlist import Node
 def check_palindrome(head):
     if head is None:
         return False
+
+    reversed_linked_list = Node(head.data)
+    reversed_linked_list.next = None
+    current_node = head.next
+
+    #reverse the list
+    while current_node is not None:
+        new_node = Node(current_node.data)
+        new_node .next = reversed_linked_list
+        reversed_linked_list = new_node
+        current_node = current_node.next
+
     current_node = head
-    node_data = [head.data]
-    preivious_node = head
-    head.next = None
-    current_node = current_node.next
-    index = 0
 
-    while current_node is not None:
-        node_data.append(current_node.data)
-        two_ago_node = preivious_node
-        one_ago_node = current_node
-        current_node = current_node.next
-        one_ago_node.next = two_ago_node
-        preivious_node = one_ago_node
-
-
-
-
-    #after reversing the list, we check if it's the same as it is forward
-    current_node = preivious_node
-    while current_node is not None:
-        if index >= len(node_data) or current_node.data != node_data[index]:
+    while current_node is not None and reversed_linked_list is not None:
+        if current_node.data != reversed_linked_list.data:
             return False
-        index += 1
         current_node = current_node.next
+        reversed_linked_list = reversed_linked_list.next
 
     return True
 
