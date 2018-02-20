@@ -38,7 +38,7 @@ def partition_linked_list(head, partition):
             right_head = right_partition
         current_node = current_node.next
 
-    #merge the two partition halves
+    #merge the two partition halves«»
     #We want to attach it to the head of the right partition!
     left_partition.next = right_head
 
